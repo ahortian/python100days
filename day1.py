@@ -1,3 +1,6 @@
+##############################################
+# # Note
+##############################################
 # (0) PEP8: 
 #  - has one empty line at the end of file
 #
@@ -8,24 +11,39 @@
 # (2) String Concatenation
 #
 # (3) Built-in Function: input()
-
+#
+# (4) Variable
+# name = input("What is your name? ")
+#
+# (5) Buit-in Function for string
+# - len()
+# 
+# (6) Naming Your Variables
+# - snake_case
+# - meaningful name
 
 ## ++++++++++++++++++++++++++++++++++++++++++++
-
-# print(
-# """
-# 1. Mix 500g of Flour, 10g Yeast and 300ml Water in a bowl.
-# 2. Knead the dough for 10 minutes.
-# 3. Add 3g of Salt.
-# 4. Leave to rise for 2 hours.
-# 5. Bake at 200 degrees C for 30 minutes.
-# """
-# )
 
 # print("Hello World!\nHello World!\nHello World!")
 
 # string concatenation
 # print("Hello" + " " + "Angela")
 
-print("".join(["Hello ", input("What is your name? "), "!"]))
-print("Hello " + input("What is your name? ") + "!")
+# print(" ".join(["Hello", input("What is your name? "), "!"]))
+# print("Hello " + input("What is your name? ") + "!")
+
+## ++++++++++++++++++++++++++++++++++++++++++++
+
+# # variable
+# name = input("What is your name? ")
+# print("Hello " + name + "!")
+
+# length_of_name = len(name)
+# print(length_of_name)
+
+## ++++++++++++++++++++++++++++++++++++++++++++
+
+print("Welcome to the Band Name Generator.")
+city = input("What's the name of the city you grew up in?\n")
+pet = input("What's your pet's name?\n")
+print("Your band name could be " + city + " " + pet)
