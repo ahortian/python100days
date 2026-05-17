@@ -1,5 +1,5 @@
 """
-A simple Rock Paper Scissor app using Streamlit.
+A simple Rock Paper Scissors app using Streamlit.
 
 Run with:
     streamlit run rock_paper_scissor.py
@@ -9,7 +9,7 @@ import random
 
 import streamlit as st
 
-OPTIONS = ["rock", "paper", "scissor"]
+OPTIONS = ["rock", "paper", "scissors"]
 
 
 def init_state():
@@ -22,13 +22,13 @@ def init_state():
     if "user_choice" not in st.session_state:
         st.session_state.user_choice = "?"
     if "result_text" not in st.session_state:
-        st.session_state.result_text = "Choose rock, paper, or scissor to start."
+        st.session_state.result_text = "Choose rock, paper, or scissors to start."
     if "n_games" not in st.session_state:
         st.session_state.n_games = 0
     if "n_wins" not in st.session_state:
         st.session_state.n_wins = 0
-    if "n_loose" not in st.session_state:
-        st.session_state.n_loose = 0
+    if "n_losses" not in st.session_state:
+        st.session_state.n_losses = 0
     if "n_ties" not in st.session_state:
         st.session_state.n_ties = 0
 
@@ -42,16 +42,16 @@ def play_round(user_choice: str):
     if user_choice == computer_choice:
         st.session_state.result_text = "It's a tie!"
         st.session_state.n_ties += 1
-    elif (user_choice == "rock" and computer_choice == "scissor") or \
+    elif (user_choice == "rock" and computer_choice == "scissors") or \
          (user_choice == "paper" and computer_choice == "rock") or \
-         (user_choice == "scissor" and computer_choice == "paper"):
+         (user_choice == "scissors" and computer_choice == "paper"):
         st.session_state.result_text = "You win!"
         st.session_state.user_score += 1
         st.session_state.n_wins += 1
     else:
         st.session_state.result_text = "Computer wins!"
         st.session_state.computer_score += 1
-        st.session_state.n_loose += 1
+        st.session_state.n_losses += 1
 
 
 def reset_game():
@@ -64,7 +64,7 @@ def reset_game():
 
 init_state()
 
-st.title("Rock Paper Scissor")
+st.title("Rock Paper Scissors")
 st.write("Play against the computer and see the score update instantly.")
 
 col1, col2, col3 = st.columns(3)
@@ -75,14 +75,14 @@ with col2:
     if st.button("Paper"):
         play_round("paper")
 with col3:
-    if st.button("Scissor"):
-        play_round("scissor")
+    if st.button("Scissors"):
+        play_round("scissors")
 
 st.markdown("---")
 
 st.markdown(f"You chose {st.session_state.user_choice}, Computer chose {st.session_state.computer_choice}, {st.session_state.result_text}")
 
 st.write(f"**Score — You:** {st.session_state.user_score}  **Computer:** {st.session_state.computer_score}")
-st.write(f"**Games:** {st.session_state.n_games}  **Wins:** {st.session_state.n_wins}  **Loose:** {st.session_state.n_loose}  **Ties:** {st.session_state.n_ties}")
+st.write(f"**Games:** {st.session_state.n_games}  **Wins:** {st.session_state.n_wins}  **Losses:** {st.session_state.n_losses}  **Ties:** {st.session_state.n_ties}")
 
 st.button("Reset", on_click=reset_game)
